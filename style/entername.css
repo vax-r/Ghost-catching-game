@@ -1,0 +1,47 @@
+.introall{
+    width:100%;
+    height:80%;
+    margin:0% 0%;
+    object-fit:contain;
+    object-position:0%;
+    position: relative;
+   
+}
+.introflower{
+    height:100%;
+    width:100%; 
+}
+.intropeople{
+    width:100%;
+    height:100%;
+}
+.intropeoplediv{
+    position:absolute;
+    top:15%;
+    width:35%;
+    height:70%;
+    margin-left:5%;
+    object-fit:contain;
+}
+.intropeopleworddiv{
+    position:absolute;
+    top:25%;
+    right:5%;
+    width:50%;
+    height:15%;
+    object-fit:contain;
+    display:inline-flex;
+}
+.intropeopleword{
+    height:100%;
+    width:90%;
+}   
+.intropeoplego{
+    width:10%;
+    height:100%;
+    float:right;
+    object-fit:contain;
+}
+.intropeoplegoimage{
+   
+}
