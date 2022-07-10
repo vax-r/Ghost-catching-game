@@ -36,9 +36,9 @@ function CustomPrompt(): void{
     }
 
     this.ok = function(func: string, id: number){
-        console.log(id);
         var prompt_value1: any = document.getElementById("prompt_value1");
         prompt_value1 = prompt_value1.value;
+        if(prompt_value1===""){prompt_value1="Player "+id;}
         window[func](prompt_value1);
         dialogbox.style.display = "none";
         dialogoverlay.style.display = "none";
