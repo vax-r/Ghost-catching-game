@@ -1,4 +1,4 @@
-var second: number =5;
+var second: number =60;
 var timer: any = null;
 
 function startCounDown(): void{

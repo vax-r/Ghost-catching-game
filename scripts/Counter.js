@@ -1,10 +1,8 @@
-var second = 5;
+var second = 60;
 var timer = null;
 function startCounDown() {
     var background = document.getElementById("leftbackground");
     background.src = "../image/mainframe-clock3.png";
-    background.style.width = "100%";
-    background.style.height = "80%";
     var time_counter = document.getElementById("time_counter");
     time_counter.style.display = "block";
     timer = setInterval(function () {
