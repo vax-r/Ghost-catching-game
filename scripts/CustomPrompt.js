@@ -24,15 +24,16 @@ function CustomPrompt() {
         dialogbox.style.left = (winW / 2) - (550 * 0.5) + "px";
         dialogbox.style.top = "100px";
         dialogbox.style.display = "block";
-        // dialogboxhead.innerHTML = "A value is required";
         dialogboxhead.innerHTML = dialog;
         dialogboxbody.innerHTML = '<input id="prompt_value1">';
         dialogboxfoot.innerHTML = '<button onclick="Prompt.ok(\'' + func + '\',\'' + id + '\')">OK</button>';
     };
     this.ok = function (func, id) {
-        console.log(id);
         var prompt_value1 = document.getElementById("prompt_value1");
         prompt_value1 = prompt_value1.value;
+        if (prompt_value1 === "") {
+            prompt_value1 = "Player " + id;
+        }
         window[func](prompt_value1);
         dialogbox.style.display = "none";
         dialogoverlay.style.display = "none";
