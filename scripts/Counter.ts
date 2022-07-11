@@ -24,7 +24,10 @@ function StopTime(){
 }
 
 function ResetTime(){
-    var counter: any = document.getElementById("time_counter");
-    counter.innerHTML = "60秒";
     second=60;
+    var time_counter: any = document.getElementById("time_counter");
+    var counter: any = document.getElementById("counter");
+    counter.style.left = "40%";
+    counter.style.top="7%";
+    time_counter.innerHTML = second +"秒";
 }
