@@ -1,29 +1,62 @@
 var speed = 5;
-var ghostTop = 40;
-var ghostLeft = 40;
 var player1Top = 60;
 var player1Left = 60;
 var player2Top = 20;
 var player2Left = 20;
-var ghost = new moveGhost("ghost");
-var player1 = new moveAvatar("Player1");
-var player2 = new moveAvatar("Player2");
+var player3Top = 40;
+var player3Left = 40;
+// var ghost: any = new moveGhost("ghost");
+var player1;
+var player2;
+var player3;
+//generate random integer
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+var Ghost_id = getRandomInt(1, 3);
+function setGhost() {
+    var player_name = document.getElementById("player_name" + Ghost_id);
+    var player_fig = document.getElementById("p" + Ghost_id + "_fig");
+    var ghost_name = "(GHOST)";
+    player_name.innerHTML += ghost_name;
+    player_fig.innerHTML += ghost_name;
+    switch (Ghost_id) {
+        case 1:
+            player1 = new moveGhost("Player1");
+            player2 = new moveAvatar("Player2");
+            player3 = new moveAvatar("Player3");
+            break;
+        case 2:
+            player1 = new moveAvatar("Player1");
+            player2 = new moveGhost("Player2");
+            player3 = new moveAvatar("Player3");
+            break;
+        case 3:
+            player1 = new moveAvatar("Player1");
+            player2 = new moveAvatar("Player2");
+            player3 = new moveGhost("Player3");
+            break;
+    }
+}
+setGhost();
 window.addEventListener("keydown", function (e) {
     onKey(e);
 });
 function onKey(e) {
     switch (e.code) {
         case "KeyW":
-            ghost.moveUp();
+            player3.moveUp();
             break;
         case "KeyS":
-            ghost.moveDown();
+            player3.moveDown();
             break;
         case "KeyA":
-            ghost.moveLeft();
+            player3.moveLeft();
             break;
         case "KeyD":
-            ghost.moveRight();
+            player3.moveRight();
             break;
         case "ArrowUp":
             player1.moveUp();
@@ -68,6 +101,9 @@ function moveAvatar(avatar_name) {
             atr_top = player2Top;
             atr_left = player2Left;
             break;
+        case "Player3":
+            atr_top = player3Top;
+            atr_left = player3Left;
         default: break;
     }
     this.moveUp = function () {
@@ -105,8 +141,22 @@ function moveAvatar(avatar_name) {
 }
 function moveGhost(avatar_name) {
     var avatar = document.getElementById(avatar_name);
-    var atr_top = ghostTop;
-    var atr_left = ghostLeft;
+    var atr_top;
+    var atr_left;
+    switch (avatar_name) {
+        case "Player1":
+            atr_top = player1Top;
+            atr_left = player1Left;
+            break;
+        case "Player2":
+            atr_top = player2Top;
+            atr_left = player2Left;
+            break;
+        case "Player3":
+            atr_top = player3Top;
+            atr_left = player3Left;
+        default: break;
+    }
     var next_top;
     var next_left;
     this.moveUp = function () {
