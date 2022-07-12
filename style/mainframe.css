@@ -73,6 +73,14 @@
 	top:40%;
 	left:40%;
 }
+.Player1{
+	top:60%;
+	left:60%;
+}
+.Player2{
+	top:20%;
+	left:20%;
+}
 .specialbutton{
 	width:20%;
 	/*background-color: aqua;*/	
