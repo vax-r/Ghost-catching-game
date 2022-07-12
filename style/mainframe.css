@@ -166,30 +166,105 @@
 	position: fixed;
 	background: #000;
 	border-radius: 7px;
-	width: 550px;
+	width:540px;
 	z-index: 10;
+	background-image:url("../image/backgroundimage.png");
+	opacity:0.85;
+	background-position:50%;
+	background-size:contain;
+	background-repeat: no-repeat;
 }
 
 #dialogbox div{
-	background: #FFF;
+	/*background: #FFF;*/
 	margin: 8px;
 }
 
 #dialogbox div#dialogboxhead{
-	background: #666;
+	/*background: #666;*/
 	font-size: 19px;
 	padding: 10px;
 	color: white;
 }
 
 #dialogbox div#dialogboxbody{
-	background: #333;
+	/*background: #333;*/
 	padding: 20px;
 	color: #FFF;
 }
 
 #dialogbox div#dialogboxfoot{
-	background: #666;
+	/*background: #666;*/
 	padding: 10px;
 	text-align: right;
+}
+#introductinotitle{
+	margin-top:6%;
+	margin-left:10%;
+	margin-bottom:0%;
+	border-bottom:solid 2px black;
+	padding-bottom:2%;
+	width: 80%;
+	font-size:1.5em;
+	font-weight:500;
+}
+#rule{
+	margin-top:0%;
+	margin-left:10%;
+	margin-bottom:0%;
+	padding-bottom:0%;
+}
+#button{
+	margin-left:10%;
+	margin-top:2%;
+	padding-top:0%
+}
+#image{
+	background-repeat: no-repeat;
+	background-color: aqua;
+	width:20%;
+	height:65%;
+	
+}
+.name{
+	font-size:1.5em;
+	margin-left:8%;
+}
+#title{
+	margin-top:10%;
+	margin-bottom:6%;
+}
+#input{
+	margin-top:0.5%;
+	border:1.5px solid black;
+	border-radius:3px;
+	height:70%;
+	width: 95%;
+	margin-left:1.5%;
+}
+#typename{
+	margin-bottom:1%;
+}
+#inputdiv{
+	background-color: #FFF;
+	width:40%;
+	height:12%;
+	position:absolute;
+	left:7%;
+	border-radius:3px;
+}
+#buttonplayer{
+	position:absolute;
+	left:52%;
+	top:72%;
+}
+#imageplayer{
+	object-fit: contain;
+}
+#imageplayer{
+	position:absolute;
+	width:25%;
+	height:60%;
+	right:10%;
+	top:25%;
 }
