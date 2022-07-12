@@ -251,13 +251,13 @@
 	height:12%;
 	position:absolute;
 	left:7%;
-	top:73%
+	top:70%;
 	border-radius:3px;
 }
 #buttonplayer{
 	position:absolute;
 	left:52%;
-	top:73%;
+	top:75%;
 }
 #imageplayer{
 	object-fit: contain;
