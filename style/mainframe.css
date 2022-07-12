@@ -166,12 +166,12 @@
 	position: fixed;
 	background: #000;
 	border-radius: 7px;
-	width:540px;
+	width:600px;
 	z-index: 10;
 	background-image:url("../image/backgroundimage.png");
 	opacity:0.85;
 	background-position:50%;
-	background-size:540px;
+	background-size:100% 100%;
 	background-repeat: no-repeat;
 }
 
@@ -216,7 +216,7 @@
 }
 #button{
 	margin-left:10%;
-	margin-top:2%;
+	margin-top:1%;
 	padding-top:0%
 }
 #image{
@@ -231,7 +231,7 @@
 	margin-left:8%;
 }
 #title{
-	margin-top:10%;
+	margin-top:8%;
 	margin-bottom:6%;
 }
 #input{
@@ -256,7 +256,7 @@
 #buttonplayer{
 	position:absolute;
 	left:52%;
-	top:72%;
+	top:73%;
 }
 #imageplayer{
 	object-fit: contain;
