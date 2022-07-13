@@ -15,7 +15,7 @@
 				<img src="../image/mainframe-侧栏.png" alt="left frame" class="image" id="leftbackground">
 				<div class="counter" id="counter"><h1 id="time_counter"></h1></div>
 				<div class="specialbuttondiv">
-					<div class="specialbutton left" onclick="startCounDown()"></div>
+					<div class="specialbutton left" onclick="startCounDown(); GameStart();"></div>
 					<div class="specialbutton center" onclick="StopTime()"></div>
 					<div class="specialbutton right" onclick="ResetTime()"></div>
 				</div>
@@ -49,15 +49,15 @@
 					<img src="../image/church.png" alt="house four" class="image">
 				</div>
 				<div class="houseandghost Player1" id = "Player1">
-					<img src="../image/ghost.png" alt="Player1" class="image">
+					<img src="../image/gameicon/redhat.png" alt="Player1" class="image">
 					<figcaption id="p1_fig">Player1</figcaption>
 				</div>
 				<div class="houseandghost Player2" id = "Player2">
-					<img src = "../image/spongebob.jpg" alt = "Player2" class = "image">
+					<img src = "../image/gameicon/private.png" alt = "Player2" class = "image">
 					<figcaption id="p2_fig">Player2</figcaption>
 				</div>
 				<div class="houseandghost Player3" id = "Player3">
-					<img src = "../image/patrick.png" alt = "Player3" class = "image">
+					<img src = "../image/gameicon/grandmother.png" alt = "Player3" class = "image">
 					<figcaption id="p3_fig">Player3</figcaption>
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 	</body>
 	<script>var exports = {};</script>
 	<script type="text/javascript" src="../scripts/CustomPrompt.js"></script>
-	<script type="text/javascript" src="../scripts/Counter.js"></script>
+	<!-- <script type="text/javascript" src="../scripts/Counter.js"></script> -->
 	<script type="text/javascript" src="../scripts/MoveAvatar.js"></script>
 	<!-- <script src = "../scripts/ghost.js"></script> -->
 </html>
