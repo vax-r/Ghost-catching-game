@@ -1,6 +1,6 @@
-var speed = 5;
-var width = 20;
-var height = 20;
+var speed = 4;
+var width = 12;
+var height = 16;
 var player1Obj = {
     status: 0, count: 0, top: 60, left: 60, name: ""
 };
@@ -55,7 +55,9 @@ function GameStart() {
     player1Obj.name = player_name1.innerHTML;
     player2Obj.name = player_name2.innerHTML;
     player3Obj.name = player_name3.innerHTML;
+    //test//
     Ghost_id = getRandomInt(1, 3);
+    getRandomInt(1, 3);
     setGhost();
     window.addEventListener("keydown", function (e) {
         onKey(e);
@@ -145,7 +147,7 @@ function moveAvatar(avatar_name) {
     }
     this.moveUp = function () {
         next_top = atr_top - speed;
-        if (next_top <= -3) {
+        if (next_top <0) {
             return;
         } //檢查上邊界
         atr_top = next_top;
@@ -156,10 +158,18 @@ function moveAvatar(avatar_name) {
     };
     this.moveDown = function () {
         next_top = atr_top + speed;
-        if (next_top >= 77) {
-            return;
-        } //檢查下邊界
-        atr_top = next_top;
+        if (next_top >80) {
+            if(atr_top==80){
+                atr_top = next_top-1;
+            }
+            else{
+                return;
+            }
+        }
+        else{
+            atr_top = next_top;
+        }
+       //檢查下邊界
         avatar.style.top = atr_top + "%";
         Player.top = atr_top;
         CheckCountAndStatus(avatar_name);
@@ -167,7 +177,7 @@ function moveAvatar(avatar_name) {
     };
     this.moveLeft = function () {
         next_left = atr_left - speed;
-        if (next_left <= -5) {
+        if (next_left <0) {
             return;
         } //檢查左邊界
         atr_left = next_left;
@@ -178,7 +188,7 @@ function moveAvatar(avatar_name) {
     };
     this.moveRight = function () {
         next_left = atr_left + speed;
-        if (next_left >= 81) {
+        if (next_left >88) {
             return;
         } //檢查右邊界
         atr_left = next_left;
@@ -213,9 +223,10 @@ function moveGhost(avatar_name) {
     var next_top;
     var next_left;
     this.moveUp = function () {
+        
         next_top = atr_top - speed;
         // if(上邊界 || 右上 || 左上)
-        if (next_top <= -3 || (next_top <= 24 && atr_left > 63) || (next_top <= 24 && atr_left < 14)) {
+        if (next_top <0 || (next_top <24 && atr_left > 68) || (next_top <24 && atr_left<20)) {
             return;
         }
         atr_top = next_top;
@@ -225,7 +236,7 @@ function moveGhost(avatar_name) {
     };
     this.moveDown = function () {
         next_top = atr_top + speed;
-        if (next_top >= 77 || (next_top >= 50 && atr_left < 14) || (next_top >= 50 && atr_left > 63)) {
+        if (next_top >80 || (next_top >56 && atr_left <20) || (next_top >56 && atr_left > 68)) {
             return;
         }
         atr_top = next_top;
@@ -235,7 +246,7 @@ function moveGhost(avatar_name) {
     };
     this.moveLeft = function () {
         next_left = atr_left - speed;
-        if (next_left <= -5 || (next_left <= 14 && atr_top < 24) || (next_left <= 14 && atr_top > 50)) {
+        if (next_left <0 || (next_left<20 && atr_top < 24) || (next_left <20 && atr_top > 56)) {
             return;
         }
         atr_left = next_left;
@@ -245,7 +256,7 @@ function moveGhost(avatar_name) {
     };
     this.moveRight = function () {
         next_left = atr_left + speed;
-        if (next_left >= 81 || (next_left >= 63 && atr_top < 24) || (next_left >= 63 && atr_top > 50)) {
+        if (next_left > 88 || (next_left >68 && atr_top < 20) || (next_left >68 && atr_top >56)) {
             return;
         }
         atr_left = next_left;
@@ -278,28 +289,28 @@ function CheckCountAndStatus(avatar_name) {
     temp = doc_Player.style.left;
     var playerLeft = parseInt(temp.slice(0, -1));
     var doc_count = document.getElementById("player_count" + pid);
-    if (playerTop < 24 && playerLeft < 14) { //進入左上安全區
+    if (playerTop < 24 && playerLeft < 20) { 
         if (Player.status == 0) {
             Player.count++;
             doc_count.innerHTML = "Count: " + Player.count;
         }
         Player.status = 1;
     }
-    else if (playerTop < 24 && playerLeft > 63) { //右上
+    else if (playerTop < 24 && playerLeft > 69) { 
         if (Player.status == 0) {
             Player.count++;
             doc_count.innerHTML = "Count: " + Player.count;
         }
         Player.status = 1;
     }
-    else if (playerTop > 50 && playerLeft < 14) { //左下
+    else if (playerTop > 58 && playerLeft <20) { 
         if (Player.status == 0) {
             Player.count++;
             doc_count.innerHTML = "Count: " + Player.count;
         }
         Player.status = 1;
     }
-    else if (playerTop > 50 && playerLeft > 63) { //右下
+    else if (playerTop > 58 && playerLeft > 69) { 
         if (Player.status == 0) {
             Player.count++;
             doc_count.innerHTML = "Count: " + Player.count;
@@ -316,53 +327,68 @@ function checkCollision() {
     switch (Ghost_id) {
         case 1:
             Ghost = player1Obj;
-            //Ghost and player2
-            if ((Ghost.left == player2Obj.left + width && Math.abs(Ghost.top - player2Obj.top) < height) ||
-                (Ghost.left + width == player2Obj.left && Math.abs(Ghost.top - player2Obj.top) < height) ||
-                (Ghost.top + height == player2Obj.top && Math.abs(Ghost.left - player2Obj.left) < width) ||
-                (Ghost.top == player2Obj.top + height && Math.abs(Ghost.left - player2Obj.left) < width)) {
-                GameOver(Ghost.name, player2Obj.name);
+            if ((Ghost.left <= player2Obj.left+width &&Ghost.left>player2Obj.left&& Math.abs(Ghost.top - player2Obj.top) < height) ||
+                (Ghost.left + width >= player2Obj.left &&Ghost.left<player2Obj.left&&Math.abs(Ghost.top - player2Obj.top) < height) ||
+                (Ghost.top + height>= player2Obj.top && Ghost.top<player2Obj.top&&Math.abs(Ghost.left - player2Obj.left) < width) ||
+                (Ghost.top<= player2Obj.top + height&& Ghost.top>player2Obj.top&&Math.abs(Ghost.left - player2Obj.left) < width)) {
+                if(player1Obj.status==0){
+                    GameOver(Ghost.name, player2Obj.name);
+                }
             }
             //Ghost and player3
-            else if ((Ghost.left == player3Obj.left + width && Math.abs(Ghost.top - player3Obj.top) < height) ||
-                (Ghost.left + width == player3Obj.left && Math.abs(Ghost.top - player3Obj.top) < height) ||
-                (Ghost.top + height == player3Obj.top && Math.abs(Ghost.left - player3Obj.left) < width) ||
-                (Ghost.top == player3Obj.top + height && Math.abs(Ghost.left - player3Obj.left) < width)) {
-                GameOver(Ghost.name, player3Obj.name);
+            else if ((Ghost.left <= player3Obj.left + width &&Ghost.left>player3Obj.left&& Math.abs(Ghost.top - player3Obj.top) < height) ||
+                (Ghost.left + width >= player3Obj.left &&Ghost.left<player3Obj.left&& Math.abs(Ghost.top - player3Obj.top) < height) ||
+                (Ghost.top + height-3>= player3Obj.top && Ghost.top<player3Obj.top&& Math.abs(Ghost.left - player3Obj.left) < width) ||
+                (Ghost.top <= player3Obj.top + height+3 && Ghost.top>player3Obj.top&& Math.abs(Ghost.left - player3Obj.left) < width)) {
+                if(player3Obj.status==0){
+                    GameOver(Ghost.name, player3Obj.name);
+                }
+               
             }
             break;
         case 2:
             Ghost = player2Obj;
             //Ghost and player1
-            if ((Ghost.left == player1Obj.left + width && Math.abs(Ghost.top - player1Obj.top) < height) ||
-                (Ghost.left + width == player1Obj.left && Math.abs(Ghost.top - player1Obj.top) < height) ||
-                (Ghost.top + height == player1Obj.top && Math.abs(Ghost.left - player1Obj.left) < width) ||
-                (Ghost.top == player1Obj.top + height && Math.abs(Ghost.left - player1Obj.left) < width)) {
-                GameOver(Ghost.name, player1Obj.name);
+            if ((Ghost.left <= player1Obj.left + width &&Ghost.left>player1Obj.left&& Math.abs(Ghost.top - player1Obj.top) < height) ||
+                (Ghost.left + width >= player1Obj.left  &&Ghost.left<player1Obj.left&& Math.abs(Ghost.top - player1Obj.top) < height) ||
+                (Ghost.top + height >= player1Obj.top && Ghost.top<player1Obj.top&& Math.abs(Ghost.left - player1Obj.left) < width) ||
+                (Ghost.top <= player1Obj.top + height && Ghost.top>player1Obj.top&& Math.abs(Ghost.left - player1Obj.left) < width)) {
+                if(player1Obj.status==0){
+                    GameOver(Ghost.name, player1Obj.name);
+                }
+               
             }
             //Ghost and player3
-            else if ((Ghost.left == player3Obj.left + width && Math.abs(Ghost.top - player3Obj.top) < height) ||
-                (Ghost.left + width == player3Obj.left && Math.abs(Ghost.top - player3Obj.top) < height) ||
-                (Ghost.top + height == player3Obj.top && Math.abs(Ghost.left - player3Obj.left) < width) ||
-                (Ghost.top == player3Obj.top + height && Math.abs(Ghost.left - player3Obj.left) < width)) {
-                GameOver(Ghost.name, player3Obj.name);
+            else if ((Ghost.left <= player3Obj.left + width&&Ghost.left>player3Obj.left&& Math.abs(Ghost.top - player3Obj.top) < height) ||
+                (Ghost.left + width >= player3Obj.left  &&Ghost.left<player3Obj.left&& Math.abs(Ghost.top - player3Obj.top) < height) ||
+                (Ghost.top + height >= player3Obj.top && Ghost.top<player3Obj.top&& Math.abs(Ghost.left - player3Obj.left) < width) ||
+                (Ghost.top <= player3Obj.top + height&& Ghost.top>player3Obj.top&& Math.abs(Ghost.left - player3Obj.left) < width)) { 
+                if(player3Obj.status==0){
+                    GameOver(Ghost.name, player3Obj.name);
+                }
+                
             }
             break;
         case 3:
             Ghost = player3Obj;
             //Ghost and player2
-            if ((Ghost.left == player2Obj.left + width && Math.abs(Ghost.top - player2Obj.top) < height) ||
-                (Ghost.left + width == player2Obj.left && Math.abs(Ghost.top - player2Obj.top) < height) ||
-                (Ghost.top + height == player2Obj.top && Math.abs(Ghost.left - player2Obj.left) < width) ||
-                (Ghost.top == player2Obj.top + height && Math.abs(Ghost.left - player2Obj.left) < width)) {
-                GameOver(Ghost.name, player2Obj.name);
+            if ((Ghost.left <= player2Obj.left + width &&Ghost.left>player2Obj.left&& Math.abs(Ghost.top - player2Obj.top) < height) ||
+                (Ghost.left + width >= player2Obj.left &&Ghost.left<player2Obj.left&& Math.abs(Ghost.top - player2Obj.top) < height) ||
+                (Ghost.top + height >= player2Obj.top &&Ghost.top<player2Obj.top&& Math.abs(Ghost.left - player2Obj.left) < width) ||
+                (Ghost.top <= player2Obj.top + height &&Ghost.top>player2Obj.top&& Math.abs(Ghost.left - player2Obj.left) < width)) {
+                if(player2Obj.status==0){
+                    GameOver(Ghost.name, player2Obj.name);
+                }
             }
             //Ghost and player1
-            else if ((Ghost.left == player1Obj.left + width && Math.abs(Ghost.top - player1Obj.top) < height) ||
-                (Ghost.left + width == player1Obj.left && Math.abs(Ghost.top - player1Obj.top) < height) ||
-                (Ghost.top + height == player1Obj.top && Math.abs(Ghost.left - player1Obj.left) < width) ||
-                (Ghost.top == player1Obj.top + height && Math.abs(Ghost.left - player1Obj.left) < width)) {
-                GameOver(Ghost.name, player1Obj.name);
+            else if ((Ghost.left <= player1Obj.left + width &&Ghost.left>player1Obj.left&& Math.abs(Ghost.top - player1Obj.top) < height) ||
+                (Ghost.left + width >= player1Obj.left &&Ghost.left<player1Obj.left&& Math.abs(Ghost.top - player1Obj.top) < height) ||
+                (Ghost.top + height >= player1Obj.top &&Ghost.top<player1Obj.top&& Math.abs(Ghost.left - player1Obj.left) < width) ||
+                (Ghost.top <= player1Obj.top + height &&Ghost.top>player1Obj.top&& Math.abs(Ghost.left - player1Obj.left) < width)) {
+                if(player1Obj.status==0){
+                    GameOver(Ghost.name, player1Obj.name);
+                }
+                
             }
             break;
     }
@@ -372,12 +398,17 @@ function GameOver(winner, loser) {
     var counter = document.getElementById("counter");
     counter.style.left = "23%";
     counter.style.top = "8%";
+    var second=time_counter.innerHTML;
     time_counter.innerHTML = "Game Over!";
     window.removeEventListener("keydown", function (e) {
         onKey(e);
     });
     StopTime();
-    //TODO: 彈出結束視窗，winner和loser已經用參數傳入了
+    //TODO: 彈出結束視窗，winner和loser已經用參數傳入
+    if(second!="Game Over!"){
+        GameOverWin.render(winner,loser,second);
+    }
+    
 }
 //Counter
 var second = 60;
@@ -439,9 +470,13 @@ function StopTime() {
 }
 function ResetTime() {
     second = 60;
+    var backimage=document.getElementById("rightframebackground");
+    backimage.src="..\\image\\mainframe-right.png"
     var time_counter = document.getElementById("time_counter");
     var counter = document.getElementById("counter");
     counter.style.left = "40%";
     counter.style.top = "7%";
     time_counter.innerHTML = second + "秒";
+    dialogbox.style.display = "none";
+    dialogoverlay.style.display = "none";
 }
