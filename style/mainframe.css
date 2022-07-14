@@ -38,6 +38,8 @@
 .image{
 	width: 100%;
 	height: 80%;
+	margin-top:0%;
+	padding-top:0%;
 }
 
 figcaption{
@@ -79,14 +81,20 @@ figcaption{
 .Player3{
 	top:40%;
 	left:40%;
+	height:16%;
+	width:12%;
 }
 .Player1{
 	top:60%;
 	left:60%;
+	height:16%;
+	width:12%;
 }
 .Player2{
 	top:20%;
 	left:20%;
+	height:16%;
+	width:12%;
 }
 .specialbutton{
 	width:20%;

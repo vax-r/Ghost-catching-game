@@ -66,3 +66,23 @@ function CustomConfirm() {
     };
 }
 var Confirm = new CustomConfirm();
+
+function GameOverWindow(){
+    var dialogoverlay = document.getElementById("dialogoverlay");
+    var dialogbox = document.getElementById("dialogbox");
+    this.render = function (winner,loser,timecounter) {
+        var backimage=document.getElementById("rightframebackground");
+        backimage.src="..\\image\\changebackimage.png"
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        dialogoverlay.style.display = "none";
+        dialogoverlay.style.height = winH + "px";
+        dialogbox.style.left = (winW / 2) - (550 * 0.5) + "px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.height = winH / 2 - 52 + "px";
+        dialogbox.style.display = "block";
+        dialogbox.style.opacity =1;
+        dialogbox.innerHTML = "<p id='introductinotitle'>遊戲結果</p><br><p id='rule' style='padding-left:30%;'>Winner:"+winner+"<br><br>Loser:"+loser+"<br><br>Left time:"+timecounter;
+    };
+}
+var GameOverWin = new GameOverWindow();
