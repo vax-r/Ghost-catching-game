@@ -51,6 +51,19 @@ function setGhost() {
 function GameStart() {
 
     window.addEventListener("keydown", KeyEvent);
+
+    //reset position
+    player1Obj.count = 0;player1Obj.left=60;player1Obj.top=60;
+    player2Obj.count = 0;player2Obj.left=20;player2Obj.top=20;
+    player3Obj.count = 0;player3Obj.left=40;player3Obj.top=40;
+    document.getElementById("Player1").style.left=player1Obj.left+"%";
+    document.getElementById("Player1").style.top = player1Obj.top+"%";
+    document.getElementById("Player2").style.left=player2Obj.left+"%";
+    document.getElementById("Player2").style.top = player2Obj.top+"%";
+    document.getElementById("Player3").style.left=player3Obj.left+"%";
+    document.getElementById("Player3").style.top = player3Obj.top+"%";
+
+
     if(!resume || End){
         End=false;
         //get player name
@@ -70,15 +83,7 @@ function GameStart() {
         Ghost_id = getRandomInt(1, 3);
         setGhost();
 
-        player1Obj.count = 0;player1Obj.left=60;player1Obj.top=60;
-        player2Obj.count = 0;player2Obj.left=20;player2Obj.top=20;
-        player3Obj.count = 0;player3Obj.left=40;player3Obj.top=40;
-        document.getElementById("Player1").style.left=player1Obj.left+"%";
-        document.getElementById("Player1").style.top = player1Obj.top+"%";
-        document.getElementById("Player2").style.left=player2Obj.left+"%";
-        document.getElementById("Player2").style.top = player2Obj.top+"%";
-        document.getElementById("Player3").style.left=player3Obj.left+"%";
-        document.getElementById("Player3").style.top = player3Obj.top+"%";
+        
 
         var doc_count1 = document.getElementById("player_count1");
         var doc_count2 = document.getElementById("player_count2");
