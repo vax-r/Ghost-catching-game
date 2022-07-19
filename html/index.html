@@ -15,7 +15,7 @@
 				<img src="../image/mainframe-侧栏.png" alt="left frame" class="image" id="leftbackground">
 				<div class="counter" id="counter"><h1 id="time_counter"></h1></div>
 				<div class="specialbuttondiv">
-					<div class="specialbutton left" onclick="GameStart();"></div>
+					<div class="specialbutton left" onclick="GameStart()"></div>
 					<div class="specialbutton center" onclick="StopTime()"></div>
 					<div class="specialbutton right" onclick="ResetTime()"></div>
 				</div>
@@ -65,7 +65,8 @@
 	</body>
 	<script>var exports = {};</script>
 	<script type="text/javascript" src="../scripts/CustomPrompt.js"></script>
-	<!-- <script type="text/javascript" src="../scripts/Counter.js"></script> -->
-	<script type="text/javascript" src="../scripts/MoveAvatar.js"></script>
+	<!-- <script type="text/javascript" src="../scripts/HTML_render.js"></script> -->
+	<script type="module" src="../scripts/Counter.js"></script>
+	<script type="module" src="../scripts/MoveAvatar.js"></script>
 	<!-- <script src = "../scripts/ghost.js"></script> -->
 </html>

@@ -85,4 +85,4 @@ function GameOverWindow(){
         dialogbox.innerHTML = "<p id='introductinotitle'>遊戲結果</p><br><p id='rule' style='padding-left:30%;'>Winner:"+winner+"<br><br>Loser:"+loser+"<br><br>Left time:"+timecounter;
     };
 }
-var GameOverWin = new GameOverWindow();
+var GameOverWin = new GameOverWindow(); //magical export
