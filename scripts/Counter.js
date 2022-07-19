@@ -52,20 +52,19 @@ function GameStart() {
 
     window.addEventListener("keydown", KeyEvent);
 
-    //reset position
-    player1Obj.count = 0;player1Obj.left=60;player1Obj.top=60;
-    player2Obj.count = 0;player2Obj.left=20;player2Obj.top=20;
-    player3Obj.count = 0;player3Obj.left=40;player3Obj.top=40;
-    document.getElementById("Player1").style.left=player1Obj.left+"%";
-    document.getElementById("Player1").style.top = player1Obj.top+"%";
-    document.getElementById("Player2").style.left=player2Obj.left+"%";
-    document.getElementById("Player2").style.top = player2Obj.top+"%";
-    document.getElementById("Player3").style.left=player3Obj.left+"%";
-    document.getElementById("Player3").style.top = player3Obj.top+"%";
-
-
     if(!resume || End){
         End=false;
+        //reset position
+        player1Obj.count = 0;player1Obj.left=60;player1Obj.top=60;
+        player2Obj.count = 0;player2Obj.left=20;player2Obj.top=20;
+        player3Obj.count = 0;player3Obj.left=40;player3Obj.top=40;
+        document.getElementById("Player1").style.left=player1Obj.left+"%";
+        document.getElementById("Player1").style.top = player1Obj.top+"%";
+        document.getElementById("Player2").style.left=player2Obj.left+"%";
+        document.getElementById("Player2").style.top = player2Obj.top+"%";
+        document.getElementById("Player3").style.left=player3Obj.left+"%";
+        document.getElementById("Player3").style.top = player3Obj.top+"%";
+        
         //get player name
         var player_name1 = document.getElementById("player_name1");
         var player_name2 = document.getElementById("player_name2");
@@ -82,8 +81,6 @@ function GameStart() {
         //test//
         Ghost_id = getRandomInt(1, 3);
         setGhost();
-
-        
 
         var doc_count1 = document.getElementById("player_count1");
         var doc_count2 = document.getElementById("player_count2");
@@ -102,7 +99,7 @@ export function GameOver(winner, loser) {
     var counter = document.getElementById("counter");
     counter.style.left = "23%";
     counter.style.top = "8%";
-    // var second=time_counter.innerHTML;
+
     var left_time = second;
     time_counter.innerHTML = "Game Over!";
     window.removeEventListener("keydown", KeyEvent);
